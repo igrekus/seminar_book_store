@@ -1,5 +1,4 @@
-from pyexpect import expect
-from book_shop_func_full_lambda import BookShop, Item
+from src.book_shop import BookShop, Item
 
 
 def test_normal_item_before_sell_data():
@@ -7,7 +6,7 @@ def test_normal_item_before_sell_data():
 
     shop.update_quality()
 
-    expect(shop.items).to_equal([Item('normal item', sell_in=49, quality=49)])
+    assert shop.items == [Item('normal item', sell_in=49, quality=49)]
 
 
 def test_normal_on_sell_date():
@@ -15,7 +14,7 @@ def test_normal_on_sell_date():
 
     shop.update_quality()
 
-    expect(shop.items).to_equal([Item('normal item', sell_in=-1, quality=8)])
+    assert shop.items == [Item('normal item', sell_in=-1, quality=8)]
 
 
 def test_normal_item_after_sell_date():
@@ -23,7 +22,7 @@ def test_normal_item_after_sell_date():
 
     shop.update_quality()
 
-    expect(shop.items).to_equal([Item('normal item', sell_in=-2, quality=8)])
+    assert shop.items == [Item('normal item', sell_in=-2, quality=8)]
 
 
 def test_normal_item_of_zero_quality():
@@ -35,8 +34,8 @@ def test_normal_item_of_zero_quality():
 
     shop.update_quality()
 
-    expect(shop.items).to_equal([
+    assert shop.items == [
         Item('normal item', sell_in=9, quality=0),
         Item('normal item', sell_in=-1, quality=0),
         Item('normal item', sell_in=-2, quality=0),
-    ])
+    ]

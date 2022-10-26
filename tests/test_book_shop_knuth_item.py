@@ -1,5 +1,4 @@
-from pyexpect import expect
-from book_shop_func_full_lambda import BookShop, Item
+from src.book_shop import BookShop, Item
 
 
 def test_knuth_item_before_sell_date():
@@ -7,7 +6,7 @@ def test_knuth_item_before_sell_date():
 
     shop.update_quality()
 
-    expect(shop.items).to_equal([Item('Д. Кнут, Искусство программирования', sell_in=49, quality=49)])
+    assert shop.items == [Item('Д. Кнут, Искусство программирования', sell_in=49, quality=49)]
 
 
 def test_knuth_item_before_sell_date_and_max_quality():
@@ -15,7 +14,7 @@ def test_knuth_item_before_sell_date_and_max_quality():
 
     shop.update_quality()
 
-    expect(shop.items).to_equal([Item('Д. Кнут, Искусство программирования', sell_in=49, quality=50)])
+    assert shop.items == [Item('Д. Кнут, Искусство программирования', sell_in=49, quality=50)]
 
 
 def test_knuth_item_on_sell_date():
@@ -23,7 +22,7 @@ def test_knuth_item_on_sell_date():
 
     shop.update_quality()
 
-    expect(shop.items).to_equal([Item('Д. Кнут, Искусство программирования', sell_in=-1, quality=10)])
+    assert shop.items == [Item('Д. Кнут, Искусство программирования', sell_in=-1, quality=10)]
 
 
 def test_knuth_item_on_sell_date_and_near_max_quality():
@@ -31,7 +30,7 @@ def test_knuth_item_on_sell_date_and_near_max_quality():
 
     shop.update_quality()
 
-    expect(shop.items).to_equal([Item('Д. Кнут, Искусство программирования', sell_in=-1, quality=50)])
+    assert shop.items == [Item('Д. Кнут, Искусство программирования', sell_in=-1, quality=50)]
 
 
 def test_knuth_item_on_sell_date_and_max_quality():
@@ -39,7 +38,7 @@ def test_knuth_item_on_sell_date_and_max_quality():
 
     shop.update_quality()
 
-    expect(shop.items).to_equal([Item('Д. Кнут, Искусство программирования', sell_in=-1, quality=50)])
+    assert shop.items == [Item('Д. Кнут, Искусство программирования', sell_in=-1, quality=50)]
 
 
 def test_knuth_item_after_sell_date():
@@ -47,7 +46,7 @@ def test_knuth_item_after_sell_date():
 
     shop.update_quality()
 
-    expect(shop.items).to_equal([Item('Д. Кнут, Искусство программирования', sell_in=-2, quality=12)])
+    assert shop.items == [Item('Д. Кнут, Искусство программирования', sell_in=-2, quality=12)]
 
 
 def test_knuth_item_after_sell_date_and_near_max_quality():
@@ -55,7 +54,7 @@ def test_knuth_item_after_sell_date_and_near_max_quality():
 
     shop.update_quality()
 
-    expect(shop.items).to_equal([Item('Д. Кнут, Искусство программирования', sell_in=-2, quality=50)])
+    assert shop.items == [Item('Д. Кнут, Искусство программирования', sell_in=-2, quality=50)]
 
 
 def test_knuth_item_after_sell_date_and_max_quality():
@@ -63,4 +62,4 @@ def test_knuth_item_after_sell_date_and_max_quality():
 
     shop.update_quality()
 
-    expect(shop.items).to_equal([Item('Д. Кнут, Искусство программирования', sell_in=-2, quality=50)])
+    assert shop.items == [Item('Д. Кнут, Искусство программирования', sell_in=-2, quality=50)]
